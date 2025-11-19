@@ -1,0 +1,434 @@
+<!--
+  index.html
+  موقع مكتب محاماة - صفحة كاملة (Arabic RTL)
+  جاهز للنسخ: Save as index.html and open in browser
+-->
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مكتب القانوني - استشارات قانونية وتمثيل قضائي</title>
+  <meta name="description" content="مكتب محاماة متخصص في تقديم الاستشارات القانونية والتمثيل القضائي. احجز استشارة الآن." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Arabic-friendly font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --accent:#0f1724; /* dark slate */
+      --muted:#6b7280;
+      --accent-2:#caa34a; /* gold-ish */
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Cairo', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--accent);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      direction:rtl;
+    }
+
+    /* container */
+    .container{max-width:1200px;margin:0 auto;padding:28px 20px;}
+
+    /* Header */
+    header{
+      background:#fff;
+      border-bottom:1px solid #eef2f6;
+      position:sticky;top:0;z-index:40;
+    }
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1200px;margin:0 auto;padding:14px 20px;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#0f1724 0%, #374151 100%);color:#fff;font-weight:700;font-size:20px;
+    }
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav .menu{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--accent);text-decoration:none;font-weight:500}
+    .cta{display:flex;gap:8px;align-items:center}
+    .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+    .btn-outline{border:1px solid #e6e9ef;padding:9px 12px;border-radius:10px;text-decoration:none;color:var(--accent);background:#fff}
+
+    /* hero */
+    .hero{padding:40px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+    .badge{display:inline-block;background:#fff7ed;color:#92400e;padding:6px 10px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid #fde3c4}
+    .hero-title{font-size:30px;margin:12px 0 10px;font-weight:800;line-height:1.05}
+    .hero-desc{color:var(--muted);margin-bottom:16px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .card-stats{display:flex;gap:12px;margin-top:18px}
+    .stat{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,36,0.04);min-width:150px}
+
+    .hero-image{border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,36,0.08)}
+    .hero-image img{display:block;width:100%;height:100%;object-fit:cover;min-height:300px}
+
+    /* sections */
+    section{margin-top:40px}
+    .section-header{display:flex;align-items:end;justify-content:space-between;gap:12px}
+    .section-header h2{margin:0;font-size:20px}
+    .section-sub{color:var(--muted);font-size:14px}
+
+    /* services grid */
+    .grid{display:grid;gap:18px}
+    .grid-4{grid-template-columns:repeat(1,1fr)}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(15,23,36,0.04)}
+    .service-emoji{font-size:28px;margin-bottom:8px}
+    .service-title{font-weight:700;margin-bottom:6px}
+    .service-desc{color:var(--muted);font-size:14px}
+
+    /* practice areas */
+    .areas{display:grid;grid-template-columns:1fr;gap:12px}
+    .area-item{display:flex;align-items:flex-start;gap:12px}
+
+    /* team */
+    .team-grid{display:grid;gap:12px}
+    .person{display:flex;gap:12px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:999px;background:#dbeafe;display:flex;align-items:center;justify-content:center;color:#071a52;font-weight:700}
+
+    /* testimonials */
+    .testi{background:linear-gradient(180deg,#fff 0,#fbfbff);padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(15,23,36,0.03)}
+
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:1fr;gap:18px}
+    .form input,.form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #e6e9ef;font-size:14px}
+    .form textarea{min-height:140px;resize:vertical}
+    .submit-row{display:flex;gap:12px;align-items:center}
+
+    /* footer */
+    footer{margin-top:48px;background:var(--accent);color:#fff;padding:28px;border-radius:18px}
+
+    /* responsive */
+    @media(min-width:700px){
+      .hero-grid{grid-template-columns:1fr 480px}
+      .grid-4{grid-template-columns:repeat(2,1fr)}
+      .areas{grid-template-columns:repeat(2,1fr)}
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr 380px}
+    }
+    @media(min-width:1000px){
+      .nav-wrap{padding:18px 28px}
+      .grid-4{grid-template-columns:repeat(4,1fr)}
+    }
+
+    /* small niceties */
+    a.small-link{color:var(--accent-2);text-decoration:none;font-weight:600}
+    .muted{color:var(--muted)}
+    .micro{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-wrap">
+      <div class="brand">
+        <div class="logo">ق</div>
+        <div>
+          <h1>مكتب القانوني</h1>
+          <p>خبرة. احتراف. أمانة</p>
+        </div>
+      </div>
+
+      
+
+      <div class="cta">
+        <a class="btn" href="tel:+212600000000">📞 تواصل الآن</a>
+        <a class="btn-outline" href="#contact">حجز استشارة</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="container">
+    <section id="home" class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="badge">خدمات قانونية متكاملة</span>
+          <h2 class="hero-title">نحن نقف إلى جانبك في كل قضية — استشارة محترفة وتمثيل قضائي قوي</h2>
+          <p class="hero-desc">فريقنا من المحامين المتخصصين يقدم استشارات قانونية وصياغة عقود وتمثيلاً أمام المحاكم بكفاءة ومهنية تامة. نحمي حقوقك ونبني استراتيجيات ناجحة.</p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#contact">احجز استشارة</a>
+            <a class="btn-outline" href="#services">تعرف على خدماتنا</a>
+          </div>
+
+          <div class="card-stats" aria-hidden="true">
+            <div class="stat">
+              <div class="micro">سنوات الخبرة</div>
+              <div style="font-weight:700;font-size:18px">15+</div>
+            </div>
+            <div class="stat">
+              <div class="micro">قضايا ناجحة</div>
+              <div style="font-weight:700;font-size:18px">+1200</div>
+            </div>
+            <div class="stat">
+              <div class="micro">جلسات استشارية</div>
+              <div style="font-weight:700;font-size:18px">+3,500</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1555371363-10a6a1b1b7d8?q=80&w=1400&auto=format&fit=crop" alt="مكتب محاماة" />
+          </div>
+          <div style="margin-top:14px;display:flex;gap:12px;align-items:center;justify-content:flex-end">
+            <div style="background:#fff;padding:12px;border-radius:12px;box-shadow:0 8px 20px rgba(15,23,36,0.06);min-width:200px">
+              <div class="micro">استشارة قصيرة</div>
+              <div style="font-weight:700">30 دقيقة عبر الفيديو</div>
+              <div style="margin-top:8px"><a class="small-link" href="#contact">احجز الآن →</a></div>
+            </div>
+            <div style="background:#fff7ed;padding:12px;border-radius:12px;border:1px solid #fde3c4;min-width:160px">
+              <div class="micro">خدمة الطوارئ</div>
+              <div style="font-weight:700">اتصل على الفور</div>
+              <div class="micro" style="margin-top:6px">📞 +212 600 000 000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-header">
+        <h2>من نحن</h2>
+        <div class="section-sub">مكتب متخصص في تقديم خدمات قانونية للأفراد والشركات مع سجل حافل من النتائج.</div>
+      </div>
+
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:12px">
+        <div class="card">
+          <p style="margin:0 0 10px">نحن فريق من المحامين ذوي الخبرة في القضايا المدنية، الجنائية، التجارية، وقانون الأسرة. نعمل على تقديم حلول قانونية مخصصة لكل عميل، مع التزام تام بالمهنية والأخلاق.</p>
+          <ul style="margin:10px 0 0;padding-left:18px;color:var(--muted)">
+            <li>استشارات قانونية مفصّلة</li>
+            <li>تمثيل أمام المحاكم بجميع درجاتها</li>
+            <li>صياغة ومراجعة العقود والاتفاقيات</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="section-header">
+        <h2>خدماتنا</h2>
+        <div class="section-sub">باقة متكاملة من الخدمات القانونية المصممة لتلبية متطلباتك.</div>
+      </div>
+
+      <div class="grid grid-4" style="margin-top:16px">
+        <div class="card">
+          <div class="service-emoji">⚖️</div>
+          <div class="service-title">الاستشارات القانونية</div>
+          <div class="service-desc">تحليل القضايا، تقدير المخاطر، ووضع خطة قانونية واضحة قابلة للتطبيق.</div>
+          <div style="margin-top:10px"><a class="small-link" href="#contact">اطلب استشارة</a></div>
+        </div>
+
+        <div class="card">
+          <div class="service-emoji">🏛️</div>
+          <div class="service-title">التمثيل القضائي</div>
+          <div class="service-desc">تمثيل موثوق أمام المحاكم كافة ومتابعة إجراءات التقاضي حتى نهاية الملف.</div>
+          <div style="margin-top:10px"><a class="small-link" href="#contact">تواصل معنا</a></div>
+        </div>
+
+        <div class="card">
+          <div class="service-emoji">📝</div>
+          <div class="service-title">صياغة العقود</div>
+          <div class="service-desc">صياغة عقود احترافية تحمي مصالح العملاء وتقلل المخاطر القانونية.</div>
+          <div style="margin-top:10px"><a class="small-link" href="#contact">اطلب صياغة</a></div>
+        </div>
+
+        <div class="card">
+          <div class="service-emoji">🤝</div>
+          <div class="service-title">التحكيم والوساطة</div>
+          <div class="service-desc">حل النزاعات بصورة أسرع وبكلفة أقل من التقاضي التقليدي عند الإمكان.</div>
+          <div style="margin-top:10px"><a class="small-link" href="#contact">تعرف أكثر</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Practice Areas -->
+    <section id="practice">
+      <div class="section-header">
+        <h2>مجالات الممارسة</h2>
+        <div class="section-sub">مجموعة واسعة من التخصصات القانونية.</div>
+      </div>
+
+      <div class="areas" style="margin-top:14px">
+        <div class="card area-item">
+          <div style="min-width:48px"><strong>القانون المدني</strong></div>
+          <div class="muted">قضايا التعويضات، المسؤولية المدنية، العقود المدنية، نزاعات الملكية.</div>
+        </div>
+
+        <div class="card area-item">
+          <div style="min-width:48px"><strong>قانون الأسرة</strong></div>
+          <div class="muted">قضايا الطلاق، الحضانة، النفقة، وتقسيم الممتلكات.</div>
+        </div>
+
+        <div class="card area-item">
+          <div style="min-width:48px"><strong>القانون التجاري</strong></div>
+          <div class="muted">قضايا الشركات، منازعات العقود التجارية، الإفلاس والتصفية.</div>
+        </div>
+
+        <div class="card area-item">
+          <div style="min-width:48px"><strong>القانون الجنائي</strong></div>
+          <div class="muted">الادعاء والدفاع الجنائي، القضايا الجنائية والجرائم الاقتصادية.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team & Testimonials -->
+    <section>
+      <div style="display:flex;gap:18px;flex-direction:column">
+        <div style="display:flex;gap:18px;flex-direction:column">
+          <div class="section-header">
+            <h2>فريقنا</h2>
+            <div class="section-sub">محامون ومستشارون مختصون بخبرات متنوعة.</div>
+          </div>
+
+          <div class="team-grid" style="margin-top:12px">
+            <div class="card person">
+              <div class="avatar">س</div>
+              <div>
+                <div style="font-weight:700">د. سامي العروي</div>
+                <div class="micro">محامي أول - اختصاص جنائي وتجاري</div>
+              </div>
+            </div>
+
+            <div class="card person">
+              <div class="avatar">ل</div>
+              <div>
+                <div style="font-weight:700">م. ليلى بن يونس</div>
+                <div class="micro">مستشارة قانونية - عقود وشركات</div>
+              </div>
+            </div>
+
+            <div class="card person">
+              <div class="avatar">ك</div>
+              <div>
+                <div style="font-weight:700">أ. كريم الهاشمي</div>
+                <div class="micro">محامي - قانون الأسرة</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:18px;flex-direction:column;margin-top:6px">
+          <div class="section-header">
+            <h2>آراء العملاء</h2>
+            <div class="section-sub">ما يقوله عملاؤنا عنا.</div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px">
+            <div class="testi">
+              <div style="font-weight:700">“خدمة سريعة ومحترفة. أنصح بالمكتب لأي شخص يبحث عن تمثيل قوي.”</div>
+              <div class="micro" style="margin-top:8px">— عميل، قضية تجارية ناجحة</div>
+            </div>
+            <div class="testi">
+              <div style="font-weight:700">“نجحوا في قضيتي بكفاءة ومهارة، شكرًا للفريق.”</div>
+              <div class="micro" style="margin-top:8px">— عميلة، قضايا أسرة</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-header">
+        <h2>تواصل معنا</h2>
+        <div class="section-sub">املأ النموذج وسنعاود الاتصال بك خلال 24 ساعة عمل.</div>
+      </div>
+
+      <div class="contact-grid" style="margin-top:14px">
+        <div class="card form">
+          <label class="micro">الاسم الكامل</label>
+          <input type="text" placeholder="الاسم الكامل" />
+
+          <div style="display:flex;gap:12px;margin-top:10px">
+            <div style="flex:1">
+              <label class="micro">البريد الإلكتروني</label>
+              <input type="email" placeholder="example@mail.com" />
+            </div>
+            <div style="width:160px">
+              <label class="micro">رقم الهاتف</label>
+              <input type="tel" placeholder="+212 6xx xxx xxx" />
+            </div>
+          </div>
+
+          <label class="micro" style="margin-top:10px">ملخص القضية / الرسالة</label>
+          <textarea placeholder="اكتب ملخصًا موجزًا للقضية أو السؤال"></textarea>
+
+          <div class="submit-row" style="margin-top:12px">
+            <button class="btn" type="button">إرسال الرسالة</button>
+            <div class="micro">أو تواصل معنا عبر الهاتف: <strong>+212 600 000 000</strong></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="margin-bottom:12px">
+            <div style="font-weight:700">مكتبنا</div>
+            <div class="micro" style="margin-top:6px">شارع النصر - الدار البيضاء</div>
+            <div class="micro" style="margin-top:6px">مواعيد العمل: الإثنين - السبت 9 ص - 6 م</div>
+            <div style="margin-top:10px"><a class="small-link" href="#">عرض الخريطة</a></div>
+          </div>
+
+          <div class="card">
+            <div style="font-weight:700">تواصل إلكتروني</div>
+            <div class="micro" style="margin-top:6px">contact@lawfirm.com</div>
+            <div style="margin-top:10px">
+              <div class="micro">تابعنا</div>
+              <div style="display:flex;gap:10px;margin-top:8px">
+                <a class="small-link" href="#">LinkedIn</a>
+                <a class="small-link" href="#">Facebook</a>
+                <a class="small-link" href="#">Twitter</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container" role="contentinfo" style="margin-top:28px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <div>
+            <div style="font-weight:800">مكتب القانوني</div>
+            <div class="micro" style="margin-top:6px">نوفّر استشارات قانونية وتمثيل قضائي بمستوى احترافي.</div>
+          </div>
+
+          <div style="display:flex;gap:24px;align-items:center">
+            <div>
+              <div style="font-weight:700">روابط</div>
+              <div class="micro" style="margin-top:6px">الصفحة الرئيسية · الخدمات · المجالات</div>
+            </div>
+
+            <div>
+              <div style="font-weight:700">اتصل</div>
+              <div class="micro" style="margin-top:6px">📞 +212 600 000 000</div>
+              <div class="micro">✉️ contact@lawfirm.com</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center;font-size:13px;color:rgba(255,255,255,0.9)">© <span id="year"></span> مكتب القانوني. كل الحقوق محفوظة.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // set year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
